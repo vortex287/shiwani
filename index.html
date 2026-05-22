@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advanced Calculator</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background: linear-gradient(to right, #141e30, #243b55);
+    text-align: center;
+    padding-top: 50px;
+}
+
+.calculator{
+    background-color: #1f2977;
+    width: 350px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px black;
+}
+
+h1{
+    color: #00e5ff;
+}
+
+p{
+    color: white;
+}
+
+label{
+    color: white;
+}
+
+input{
+    width: 90%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 16px;
+    background-color: #374151;
+    color: white;
+}
+
+button{
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.add{
+    background-color: #22c55e;
+}
+
+.sub{
+    background-color: #ef4444;
+}
+
+.mul{
+    background-color: #f59e0b;
+}
+
+.div{
+    background-color: #3b82f6;
+}
+
+.clear{
+    background-color: #6b7280;
+}
+
+#result{
+    color: #00ffcc;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+
+<h1>Simple Calculator</h1>
+
+<p>Enter two numbers and choose an operation.</p>
+
+<form>
+
+<label>First Number:</label><br>
+<input type="number" id="num1" placeholder="Enter first number"><br><br>
+
+<label>Second Number:</label><br>
+<input type="number" id="num2" placeholder="Enter second number"><br><br>
+
+<button type="button" class="add" onclick="add()">Add</button>
+
+<button type="button" class="sub" onclick="subtract()">Subtract</button>
+
+<button type="button" class="mul" onclick="multiply()">Multiply</button>
+
+<button type="button" class="div" onclick="divide()">Divide</button>
+
+<button type="button" class="clear" onclick="clearAll()">Clear</button>
+
+</form>
+
+<br>
+
+<p>Result: <span id="result">0</span></p>
+
+</div>
+
+<script>
+
+function getNumbers(){
+
+    var a = document.getElementById("num1").value;
+    var b = document.getElementById("num2").value;
+
+    if(a == "" || b == ""){
+        alert("Please enter both numbers");
+        return null;
+    }
+
+    return {
+        num1: Number(a),
+        num2: Number(b)
+    };
+}
+
+function add(){
+
+    var values = getNumbers();
+
+    if(values != null){
+        document.getElementById("result").innerHTML =
+        values.num1 + values.num2;
+    }
+}
+
+function subtract(){
+
+    var values = getNumbers();
+
+    if(values != null){
+        document.getElementById("result").innerHTML =
+        values.num1 - values.num2;
+    }
+}
+
+function multiply(){
+
+    var values = getNumbers();
+
+    if(values != null){
+        document.getElementById("result").innerHTML =
+        values.num1 * values.num2;
+    }
+}
+
+function divide(){
+
+    var values = getNumbers();
+
+    if(values != null){
+
+        if(values.num2 == 0){
+            alert("Cannot divide by zero");
+        }
+        else{
+            document.getElementById("result").innerHTML =
+            values.num1 / values.num2;
+        }
+    }
+}
+
+function clearAll(){
+
+    document.getElementById("num1").value = "";
+    document.getElementById("num2").value = "";
+    document.getElementById("result").innerHTML = "0";
+}
+
+</script>
+
+</body>
+</html>
